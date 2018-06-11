@@ -118,5 +118,23 @@ namespace MyMDBnew.Service
         {
             return await GetAsync<Credits>(new Uri(serverUrl, $"movie/{id}/credits?{clientKey}&{language}"));
         }
+
+        /// <summary>
+        /// Get the primary person details by id.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Person> GetPersonAsync(int id)
+        {
+            return await GetAsync<Person>(new Uri(serverUrl, $"person/{id}?{clientKey}&{language}"));
+        }
+
+        /// <summary>
+        /// Get the movie and TV credits together in a single response.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<PersonCredits> GetPersonCredits(int id)
+        {
+            return await GetAsync<PersonCredits>(new Uri(serverUrl, $"person/{id}/combined_credits?{clientKey}&{language}"));
+        }
     }
 }

@@ -82,15 +82,18 @@
                           ItemsSource="{Binding Similar}" 
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
-                          IsItemClickEnabled="True">
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnSimilarMovieClick}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
+                            <StackPanel MaxWidth="200">
                                 <Image Source="{Binding poster_path, Converter={StaticResource ImageConverter}}"
                                        Width="200"
                                        Height="200"/>
                                 <TextBlock Text="{Binding Title}"
                                            HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            FontSize="16"
                                            Margin="0,12,0,16"/>
                             </StackPanel>
@@ -111,19 +114,24 @@
                           ItemsSource="{Binding Cast}" 
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
-                          IsItemClickEnabled="True">
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnCastCrewMemberClick}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
+                            <StackPanel MaxWidth="200">
                                 <Image Source="{Binding profile_path, Converter={StaticResource ImageConverter}}"
                                        Width="200"
                                        Height="200"/>
                                 <TextBlock Text="{Binding Name}"
                                            HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            FontSize="16"
                                            Margin="0,12,0,16"/>
                                 <TextBlock Text="{Binding Character}"
                                            HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            FontSize="16"
                                            Margin="0,12,0,16"/>
                             </StackPanel>
@@ -144,7 +152,8 @@
                           ItemsSource="{Binding Crew}" 
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
-                          IsItemClickEnabled="True">
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnCastCrewMemberClick}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel MaxWidth="200">
@@ -153,11 +162,14 @@
                                        Height="200"/>
                                 <TextBlock Text="{Binding Name}"
                                            HorizontalAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            FontSize="16"
                                            Margin="0,12,0,16"/>
                                 <TextBlock Text="{Binding Job}"
                                            HorizontalAlignment="Center"
                                            TextWrapping="Wrap"
+                                           TextAlignment="Center"
                                            FontSize="16"
                                            Margin="0,12,0,16"/>
                             </StackPanel>

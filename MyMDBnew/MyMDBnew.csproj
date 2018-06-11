@@ -100,8 +100,10 @@
     <Compile Include="Model\Credits.cs" />
     <Compile Include="Model\Crew.cs" />
     <Compile Include="Model\ListResult.cs" />
+    <Compile Include="Model\PersonCredits.cs" />
     <Compile Include="ViewModel\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModel\MoviesPageViewModel.cs" />
+    <Compile Include="ViewModel\PersonPageViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +126,9 @@
     </Compile>
     <Compile Include="View\MoviesPage.xaml.cs">
       <DependentUpon>MoviesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PersonPage.xaml.cs">
+      <DependentUpon>PersonPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MoviesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PersonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
