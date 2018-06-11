@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyMDBnew.Model
 {
@@ -33,6 +34,8 @@ namespace MyMDBnew.Model
         public bool Video { get; set; }
         public float vote_average { get; set; }
         public int vote_count { get; set; }
+
+        public List<int> genre_ids { get; set; }
     }
     /*
     public class Belongs_To_Collection

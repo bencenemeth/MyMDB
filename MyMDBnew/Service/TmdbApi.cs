@@ -14,7 +14,7 @@ namespace MyMDBnew.Service
         /// <summary>
         /// Server URL
         /// </summary>
-        private readonly Uri serverUrl = new Uri("https://api.themoviedb.org/3");
+        private readonly Uri serverUrl = new Uri("https://api.themoviedb.org/3/");
 
         /// <summary>
         /// Key for network calls
@@ -68,36 +68,55 @@ namespace MyMDBnew.Service
         /// Get a list of movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Movie>> GetMovieNowPlayingAsync(int id)
+        //public async Task<List<Movie>> GetMovieNowPlayingAsync()
+        public async Task<ListResult<Movie>> GetMovieNowPlayingAsync()
         {
-            return await GetAsync<List<Movie>>(new Uri(serverUrl, $"movie/now_playing?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/now_playing?{clientKey}&{language}"));
         }
 
         /// <summary>
         /// Get a list of the current popular movies on TMDb. This list updates daily.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Movie>> GetMoviePopularAsync(int id)
+        public async Task<ListResult<Movie>> GetMoviePopularAsync()
         {
-            return await GetAsync<List<Movie>>(new Uri(serverUrl, $"movie/popular?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/popular?{clientKey}&{language}"));
         }
 
         /// <summary>
         /// Get a list of upcoming movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Movie>> GetMovieUpcomingAsync(int id)
+        public async Task<ListResult<Movie>> GetMovieUpcomingAsync()
         {
-            return await GetAsync<List<Movie>>(new Uri(serverUrl, $"movie/upcoming?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/upcoming?{clientKey}&{language}"));
         }
 
         /// <summary>
         /// Get the top rated movies on TMDb.
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Movie>> GetMovieTopRatedAsync(int id)
+        public async Task<ListResult<Movie>> GetMovieTopRatedAsync()
         {
-            return await GetAsync<List<Movie>>(new Uri(serverUrl, $"movie/top_rated?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/top_rated?{clientKey}&{language}"));
+        }
+
+        /// <summary>
+        /// Get a list of similar movies.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ListResult<Movie>> GetMovieSimilarAsync(int id)
+        {
+            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/{id}/similar?{clientKey}&{language}"));
+        }
+
+        /// <summary>
+        /// Get the cast and crew for a movie.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Credits> GetMovieCreditsAsync(int id)
+        {
+            return await GetAsync<Credits>(new Uri(serverUrl, $"movie/{id}/credits?{clientKey}&{language}"));
         }
     }
 }

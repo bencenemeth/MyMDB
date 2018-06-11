@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyMDBnew.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,15 +26,15 @@ namespace MyMDBnew.ViewModel
         {
             NavigationService.Navigate(typeof(MoviesPage));
         }
-
+        /*
         /// <summary>
         /// Click on the series image.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void SeriesClick(object sender, RoutedEventArgs e)
+        public void ShowsClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(typeof(ShowsPage));
-        }
+        }*/
     }
 }

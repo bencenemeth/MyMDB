@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="MyMDBnew.View.MoviesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyMDBnew"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:MyMDBnew.ViewModel"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MoviesPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <local:ImageConverter x:Key="ImageConverter"/>
+    </Page.Resources>
+
+    <StackPanel Name="panel">
+        <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                      Height="{Binding ElementName=panel, Path=ActualHeight}">
+            <ItemsControl>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,24,0,0"
+                            HorizontalAlignment="Center">
+                    <TextBox Background="LightGray"
+                             Width="160"
+                             Margin="0,0,4,0"
+                             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Padding="0,0,0,0">
+                        <Image Source="ms-appx:///Assets/e721.png" Width="30"/>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="Now Playing"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Margin="16,16,0,16"/>
+                <ListView ItemsSource="{Binding NowPlaying}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnListItemClick}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding poster_path, Converter={StaticResource ImageConverter}}"
+                                       Width="200"
+                                       Height="200"/>
+                                <TextBlock Text="{Binding Title}"
+                                    HorizontalAlignment="Center"
+                                    FontSize="16"
+                                    Margin="0,12,0,16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <TextBlock Text="Popular"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Margin="16,52,0,16"/>
+                <ListView ItemsSource="{Binding Popular}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnListItemClick}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding poster_path, Converter={StaticResource ImageConverter}}"
+                                       Width="200"
+                                       Height="200"/>
+                                <TextBlock Text="{Binding Title}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="16"
+                                           Margin="0,12,0,16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <TextBlock Text="Upcoming"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Margin="16,52,0,16"/>
+                <ListView ItemsSource="{Binding Upcoming}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnListItemClick}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding poster_path, Converter={StaticResource ImageConverter}}"
+                                       Width="200"
+                                       Height="200"/>
+                                <TextBlock Text="{Binding Title}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="16"
+                                           Margin="0,12,0,16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <TextBlock Text="Top Rated"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Margin="16,52,0,16"/>
+                <ListView ItemsSource="{Binding TopRated}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Disabled"
+                          IsItemClickEnabled="True"
+                          ItemClick="{x:Bind ViewModel.OnListItemClick}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Image Source="{Binding poster_path, Converter={StaticResource ImageConverter}}"
+                                       Width="200"
+                                       Height="200"/>
+                                <TextBlock Text="{Binding Title}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="16"
+                                           Margin="0,12,0,16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </ItemsControl>
+        </ScrollViewer>
+    </StackPanel>
+</Page>
