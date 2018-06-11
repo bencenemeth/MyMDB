@@ -98,7 +98,19 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BelongsToCollection.cs" />
+    <Compile Include="Model\CreatedBy.cs" />
+    <Compile Include="Model\Genre.cs" />
+    <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Network.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\ProductionCompanies.cs" />
+    <Compile Include="Model\ProductionCountries.cs" />
+    <Compile Include="Model\Show.cs" />
+    <Compile Include="Model\ShowSeason.cs" />
+    <Compile Include="Model\SpokenLanguages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\TmdbApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -129,6 +141,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
