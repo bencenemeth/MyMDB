@@ -35,6 +35,8 @@ namespace MyMDBnew.Model
         public string Type { get; set; }
         public float vote_average { get; set; }
         public int vote_count { get; set; }
+        
+        public string MediaType { get; set; }
     }
     /*
     public class Created_By

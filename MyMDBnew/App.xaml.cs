@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -20,7 +21,7 @@ namespace MyMDBnew
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App : Template10.Common.BootStrapper
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -29,8 +30,14 @@ namespace MyMDBnew
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
         }
+
+        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
+        {
+            await NavigationService.NavigateAsync(typeof(MainPage));
+        }
+
+        /*
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -96,5 +103,7 @@ namespace MyMDBnew
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        */
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyMDBnew.Model
 {
@@ -33,40 +34,9 @@ namespace MyMDBnew.Model
         public bool Video { get; set; }
         public float vote_average { get; set; }
         public int vote_count { get; set; }
-    }
-    /*
-    public class Belongs_To_Collection
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string poster_path { get; set; }
-        public string backdrop_path { get; set; }
-    }
 
-    public class Genre
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-    }
+        public List<int> genre_ids { get; set; }
 
-    public class Production_Companies
-    {
-        public int id { get; set; }
-        public string logo_path { get; set; }
-        public string name { get; set; }
-        public string origin_country { get; set; }
+        public string MediaType { get; set; }
     }
-
-    public class Production_Countries
-    {
-        public string iso_3166_1 { get; set; }
-        public string name { get; set; }
-    }
-
-    public class Spoken_Languages
-    {
-        public string iso_639_1 { get; set; }
-        public string name { get; set; }
-    }
-    */
 }
