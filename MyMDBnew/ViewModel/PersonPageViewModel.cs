@@ -42,7 +42,7 @@ namespace MyMDBnew.ViewModel
         {
             var personId = (int)parameter;
 
-            var service = new TmdbApi();
+            var service = new TmdbService();
 
             GetPerson(personId, service);
             GetPersonMovieCredits(personId, service);
@@ -55,7 +55,7 @@ namespace MyMDBnew.ViewModel
         /// </summary>
         /// <param name="personId"></param>
         /// <param name="service"></param>
-        public async void GetPerson(int personId, TmdbApi service)
+        public async void GetPerson(int personId, TmdbService service)
         {
             Person = await service.GetPersonAsync(personId);
         }
@@ -65,7 +65,7 @@ namespace MyMDBnew.ViewModel
         /// </summary>
         /// <param name="personId"></param>
         /// <param name="service"></param>
-        public async void GetPersonMovieCredits(int personId, TmdbApi service)
+        public async void GetPersonMovieCredits(int personId, TmdbService service)
         {
             var credits = await service.GetPersonCredits(personId);
             if (credits != null)

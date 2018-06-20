@@ -63,7 +63,7 @@ namespace MyMDBnew.ViewModel
             // Getting the ID of the movie from the parameter object
             var movieId = (int)parameter;
 
-            var service = new TmdbApi();
+            var service = new TmdbService();
         
             GetMovieDetails(movieId, service);
             GetSimilarMovies(movieId, service);
@@ -77,7 +77,7 @@ namespace MyMDBnew.ViewModel
         /// </summary>
         /// <param name="movieId"></param>
         /// <param name="service"></param>
-        public async void GetMovieDetails(int movieId, TmdbApi service)
+        public async void GetMovieDetails(int movieId, TmdbService service)
         {
             Movie = await service.GetMovieAsync(movieId);
         }
@@ -87,7 +87,7 @@ namespace MyMDBnew.ViewModel
         /// </summary>
         /// <param name="movieId"></param>
         /// <param name="service"></param>
-        public async void GetSimilarMovies(int movieId, TmdbApi service)
+        public async void GetSimilarMovies(int movieId, TmdbService service)
         {
             var similar = await service.GetMovieSimilarAsync(movieId);
             if (similar != null)
@@ -104,7 +104,7 @@ namespace MyMDBnew.ViewModel
         /// </summary>
         /// <param name="movieId"></param>
         /// <param name="service"></param>
-        public async void GetCredits(int movieId, TmdbApi service)
+        public async void GetCredits(int movieId, TmdbService service)
         {
             var credits = await service.GetMovieCreditsAsync(movieId);
             if (credits != null)

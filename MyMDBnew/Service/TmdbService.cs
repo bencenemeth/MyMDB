@@ -9,22 +9,46 @@ using System.Threading.Tasks;
 
 namespace MyMDBnew.Service
 {
-    public class TmdbApi
+    public class TmdbService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
         /// <summary>
         /// Server URL
         /// </summary>
-        private readonly Uri serverUrl = new Uri("https://api.themoviedb.org/3/");
+        private readonly Uri uri;
 
         /// <summary>
         /// Key for network calls
         /// </summary>
-        private readonly string clientKey = "api_key=b99081aad4a5b58ab3c3494ee01a9253";
+        private readonly string key;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly string apiKey = "api_key";
+
 
         /// <summary>
         /// 
         /// </summary>
         private string language = "language=en_US";
+
+        public TmdbService()
+        {
+            //SetCredentials();
+            uri = new Uri(localSettings.Values["serverUri"].ToString());
+            key = localSettings.Values["apiKey"].ToString();
+        }
+
+        private void SetCredentials ()
+        {
+            localSettings.Values["serverUri"] = "https://api.themoviedb.org/3/";
+            localSettings.Values["apiKey"] = "b99081aad4a5b58ab3c3494ee01a9253";
+        }
 
         private async Task<T> GetAsync<T>(Uri uri)
         {
@@ -32,8 +56,6 @@ namespace MyMDBnew.Service
             {
                 // Adding the required headers
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                //client.DefaultRequestHeaders.Add("trakt-api-version", "2");
-                //client.DefaultRequestHeaders.Add("trakt-api-key", clientKey);
 
                 // Ignoring null values and missing members from response
                 var settings = new JsonSerializerSettings
@@ -61,7 +83,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<Movie> GetMovieAsync(int id)
         {
-            return await GetAsync<Movie>(new Uri(serverUrl, $"movie/{id}?{clientKey}&{language}"));
+            return await GetAsync<Movie>(new Uri(uri, $"movie/{id}?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -71,7 +93,7 @@ namespace MyMDBnew.Service
         //public async Task<List<Movie>> GetMovieNowPlayingAsync()
         public async Task<ListResult<Movie>> GetMovieNowPlayingAsync()
         {
-            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/now_playing?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"movie/now_playing?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -80,7 +102,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<ListResult<Movie>> GetMoviePopularAsync()
         {
-            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/popular?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"movie/popular?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -89,7 +111,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<ListResult<Movie>> GetMovieUpcomingAsync()
         {
-            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/upcoming?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"movie/upcoming?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -98,7 +120,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<ListResult<Movie>> GetMovieTopRatedAsync()
         {
-            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/top_rated?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"movie/top_rated?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -107,7 +129,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<ListResult<Movie>> GetMovieSimilarAsync(int id)
         {
-            return await GetAsync<ListResult<Movie>>(new Uri(serverUrl, $"movie/{id}/similar?{clientKey}&{language}"));
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"movie/{id}/similar?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -116,7 +138,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<Credits> GetMovieCreditsAsync(int id)
         {
-            return await GetAsync<Credits>(new Uri(serverUrl, $"movie/{id}/credits?{clientKey}&{language}"));
+            return await GetAsync<Credits>(new Uri(uri, $"movie/{id}/credits?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -125,7 +147,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<Person> GetPersonAsync(int id)
         {
-            return await GetAsync<Person>(new Uri(serverUrl, $"person/{id}?{clientKey}&{language}"));
+            return await GetAsync<Person>(new Uri(uri, $"person/{id}?{apiKey}={key}&{language}"));
         }
 
         /// <summary>
@@ -134,7 +156,7 @@ namespace MyMDBnew.Service
         /// <returns></returns>
         public async Task<PersonCredits> GetPersonCredits(int id)
         {
-            return await GetAsync<PersonCredits>(new Uri(serverUrl, $"person/{id}/combined_credits?{clientKey}&{language}"));
+            return await GetAsync<PersonCredits>(new Uri(uri, $"person/{id}/combined_credits?{apiKey}={key}&{language}"));
         }
     }
 }

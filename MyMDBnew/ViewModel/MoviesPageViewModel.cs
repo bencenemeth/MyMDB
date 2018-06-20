@@ -43,7 +43,7 @@ namespace MyMDBnew.ViewModel
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            var service = new TmdbApi();
+            var service = new TmdbService();
 
             GetNowPlaying(service);
             GetPopular(service);
@@ -53,10 +53,10 @@ namespace MyMDBnew.ViewModel
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
 
-        public async void GetNowPlaying(TmdbApi service)
+        public async void GetNowPlaying(TmdbService service)
         {
             var nowPlaying = await service.GetMovieNowPlayingAsync();
-            if(nowPlaying != null)
+            if(nowPlaying.Results.Count != 0)
             {
                 foreach(var item in nowPlaying.Results)
                 {
@@ -65,10 +65,10 @@ namespace MyMDBnew.ViewModel
             }
         }
 
-        public async void GetPopular(TmdbApi service)
+        public async void GetPopular(TmdbService service)
         {
             var popular = await service.GetMoviePopularAsync();
-            if (popular != null)
+            if (popular.Results.Count != 0)
             {
                 foreach (var item in popular.Results)
                 {
@@ -77,10 +77,10 @@ namespace MyMDBnew.ViewModel
             }
         }
 
-        public async void GetUpcoming(TmdbApi service)
+        public async void GetUpcoming(TmdbService service)
         {
             var upcoming = await service.GetMovieUpcomingAsync();
-            if (upcoming != null)
+            if (upcoming.Results.Count != 0)
             {
                 foreach (var item in upcoming.Results)
                 {
@@ -89,10 +89,10 @@ namespace MyMDBnew.ViewModel
             }
         }
 
-        public async void GetTopRated(TmdbApi service)
+        public async void GetTopRated(TmdbService service)
         {
             var topRated = await service.GetMovieTopRatedAsync();
-            if (topRated != null)
+            if (topRated.Results.Count != 0)
             {
                 foreach (var item in topRated.Results)
                 {

@@ -119,7 +119,7 @@
     <Compile Include="Model\ShowSeason.cs" />
     <Compile Include="Model\SpokenLanguages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\TmdbApi.cs" />
+    <Compile Include="Service\TmdbService.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
@@ -183,6 +183,9 @@
     <PackageReference Include="Template10">
       <Version>1.1.12</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

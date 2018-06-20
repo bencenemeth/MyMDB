@@ -28,14 +28,14 @@
                     <StackPanel>
                         <TextBlock Text="{Binding Person.Name}"
                                Margin="16,16,0,0"
-                               FontSize="24"
+                               FontSize="48"
                                FontWeight="Bold"/>
                         <TextBlock Text="{Binding Person.Birthday}"
                                Margin="16,16,0,0"
-                               FontSize="16"/>
+                               FontSize="20"/>
                         <TextBlock Text="{Binding Person.place_of_birth}"
                                Margin="16,16,0,0"
-                               FontSize="16"/>
+                               FontSize="20"/>
                     </StackPanel>
                 </StackPanel>
                 <TextBlock Text="{Binding Person.Biography}"
