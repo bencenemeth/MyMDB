@@ -31,6 +31,11 @@ namespace MyMDBnew.Service
         /// </summary>
         private readonly string apiKey = "api_key";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly string query = "query";
+
 
         /// <summary>
         /// 
@@ -84,6 +89,16 @@ namespace MyMDBnew.Service
         public async Task<Movie> GetMovieAsync(int id)
         {
             return await GetAsync<Movie>(new Uri(uri, $"movie/{id}?{apiKey}={key}&{language}"));
+        }
+
+        /// <summary>
+        /// Search for movies.
+        /// </summary>
+        /// <param name="queryText"></param>
+        /// <returns></returns>
+        public async Task<ListResult<Movie>> GetSearchMovieAsync(string queryText)
+        {
+            return await GetAsync<ListResult<Movie>>(new Uri(uri, $"search/movie?{apiKey}={key}&{language}&{query}={queryText}"));
         }
 
         /// <summary>

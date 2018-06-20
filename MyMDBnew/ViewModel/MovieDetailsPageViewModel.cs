@@ -8,7 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace MyMDBnew.ViewModel
@@ -25,6 +28,23 @@ namespace MyMDBnew.ViewModel
             set
             {
                 Set(ref movie, value);
+            }
+        }
+
+        /// <summary>
+        /// Property of the search textbox
+        /// </summary>
+        public string query;
+        public string Query
+        {
+            get { return query; }
+            set
+            {
+                if(!string.Equals(query, value))
+                {
+                    this.query = value;
+                    this.RaisePropertyChanged();
+                }
             }
         }
 
@@ -147,6 +167,35 @@ namespace MyMDBnew.ViewModel
                 NavigationService.Navigate(typeof(PersonPage), ((Crew)e.ClickedItem).Id);
             }
             
+        }
+
+        /// <summary>
+        /// Search on pressing enter key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+                Search();
+        }
+
+        /// <summary>
+        /// Clicking on the search icon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnSearchClick(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
+
+        /// <summary>
+        /// Searching for movies
+        /// </summary>
+        public void Search()
+        {
+            NavigationService.Navigate(typeof(MoviesSearchPage), Query);
         }
     }
 }

@@ -26,7 +26,8 @@
                     <TextBox Background="LightGray"
                              Width="160"
                              Margin="0,0,4,0"
-                             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                             Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             KeyDown="{x:Bind ViewModel.OnKeyDown}" />
                     <Button Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                             HorizontalContentAlignment="Stretch"
                             VerticalContentAlignment="Stretch"
